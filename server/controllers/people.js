@@ -33,13 +33,13 @@ module.exports = {
       });
   },
 
-  show: function(req, res){
-    Person.find({}).
-      sort({created_at: -1}).
-      exec( function(err,persons){
-      res.render('main', {persons: persons})
-    });
-  },
+  //show: function(req, res){
+    //Person.find({}).
+      //sort({created_at: -1}).
+      //exec( function(err,persons){
+      //res.render('main', {persons: persons})
+    //});
+  //},
 
 
   create: function(req, res){
@@ -56,4 +56,29 @@ module.exports = {
       }
     });
   },
+
+
+  destroy: function(req, res){
+    let person = Person.findOne({name: req.params.name}, function(err ,_person){
+      console.log(_person);
+      if(_person == null){
+        console.log(`Person ${req.params.name} doesn't exist`);
+        res.json({
+          message: `Person ${req.params.name} doesn't exist`
+        });
+      } else {
+        _person.remove(function(err){
+          if(err){
+            res.json(err);
+          } else {
+            res.json({
+              result: `Person name:${req.params.name} is deleted`
+            });
+          }
+        });
+      }
+    });
+  },
+
+
 }

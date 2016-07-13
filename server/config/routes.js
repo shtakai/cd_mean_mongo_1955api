@@ -16,6 +16,9 @@ module.exports = function(app){
     people.create(req, res);
   })
 
+  app.get('/remove/:name', function(req, res){
+    people.destroy(req, res);
+  })
 
 
 }

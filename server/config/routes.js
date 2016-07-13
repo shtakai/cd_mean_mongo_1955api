@@ -10,7 +10,7 @@ module.exports = function(app){
 
   // render -> client/views/index.ejs
   app.get('/', function(req, res){
-    res.send('index');
+    people.index(req, res);
   })
 
 

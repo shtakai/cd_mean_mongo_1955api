@@ -44,7 +44,7 @@ module.exports = {
 
   create: function(req, res){
     let person = new Person({
-      name: req.body.name,
+      name: req.params.name,
     });
     person.save(function(err){
       if(err){

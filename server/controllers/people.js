@@ -33,14 +33,23 @@ module.exports = {
       });
   },
 
-  //show: function(req, res){
-    //Person.find({}).
-      //sort({created_at: -1}).
-      //exec( function(err,persons){
-      //res.render('main', {persons: persons})
-    //});
-  //},
-
+  show: function(req, res){
+    let person = Person.findOne({name: req.params.name}, function(err ,_person){
+      console.log(_person);
+      if(_person == null){
+        console.log(`Person ${req.params.name} doesn't exist`);
+        res.json({
+          message: `Person ${req.params.name} doesn't exist`
+        });
+      } else {
+        if(err){
+          res.json(err);
+        } else {
+          res.json(_person);
+        }
+      };
+    });
+  },
 
   create: function(req, res){
     let person = new Person({

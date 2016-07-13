@@ -20,5 +20,8 @@ module.exports = function(app){
     people.destroy(req, res);
   })
 
+  app.get('/:name', function(req, res){
+    people.show(req, res);
+  })
 
 }

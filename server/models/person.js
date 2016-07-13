@@ -4,7 +4,10 @@ const mongoose = require('mongoose');
 
 // create the schema
 const PersonSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    trim: true
+  }
 },{
   timestamps: {
     createdAt: 'created_at',

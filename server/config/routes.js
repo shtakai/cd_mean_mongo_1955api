@@ -8,11 +8,13 @@ let people = require('../controllers/people.js');
 
 module.exports = function(app){
 
-  // render -> client/views/index.ejs
   app.get('/', function(req, res){
     people.index(req, res);
   })
 
+  app.get('/new/:name', function(req, res){
+    people.create(req, res);
+  })
 
 
 

@@ -45,13 +45,14 @@ module.exports = {
   create: function(req, res){
     let person = new Person({
       name: req.body.name,
-      person: req.body.person
     });
     person.save(function(err){
       if(err){
         console.log('something went wrong');
+        res.json(err);
       } else{
-        res.redirect('/main');
+        console.log(person);
+        res.json(person);
       }
     });
   },

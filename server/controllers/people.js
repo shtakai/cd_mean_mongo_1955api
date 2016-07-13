@@ -21,7 +21,7 @@ module.exports = {
 
   index: function(req, res){
     Person.find({}).
-      sort({createdAt: -1}).
+      sort({created_at: -1}).
       exec(function(err, _people){
         if(err){
           console.log(err);

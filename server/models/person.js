@@ -3,9 +3,8 @@
 const mongoose = require('mongoose');
 
 // create the schema
-const QuoteSchema = new mongoose.Schema({
+const PersonSchema = new mongoose.Schema({
   name: String,
-  quote: String
 },{
   timestamps: {
     createdAt: 'created_at',
@@ -14,4 +13,4 @@ const QuoteSchema = new mongoose.Schema({
 });
 
 // register the schema as a model
-const Quote = mongoose.model('Quote', QuoteSchema);
+const Person = mongoose.model('Person', PersonSchema);

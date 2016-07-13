@@ -1,23 +1,25 @@
 // this is sample controller
 
 const mongoose = require('mongoose');
-const Quote = mongoose.model('Quote');
+const Person = mongoose.model('Person');
+
 
 module.exports = {
   show: function(req, res){
-    Quote.find({}).
+    Person.find({}).
       sort({created_at: -1}).
-      exec( function(err,quotes){
-      res.render('main', {quotes: quotes})
+      exec( function(err,persons){
+      res.render('main', {persons: persons})
     });
   },
 
+
   create: function(req, res){
-    let quote = new Quote({
+    let person = new Person({
       name: req.body.name,
-      quote: req.body.quote
+      person: req.body.person
     });
-    quote.save(function(err){
+    person.save(function(err){
       if(err){
         console.log('something went wrong');
       } else{
